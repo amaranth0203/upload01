@@ -28,11 +28,12 @@ COPY _files /tmp/
 RUN cd /tmp/ &&\
     rm -rf /var/wwww/html/* &&\
     mv /tmp/upload-labs/* /var/www/html/ &&\
-    mv /tmp/flag.sh /flag.sh &&\
+    mv /tmp/flag.sh /usr/local/bin/flag.sh &&\
+    chmod +x /usr/local/bin/flag.sh &&\
     mv /tmp/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint &&\
     chmod +x /usr/local/bin/docker-php-entrypoint &&\
     chown www-data:www-data -R /var/www/html/ && \
-    rm -rf /tmp/*
+    echo 'aaa' # rm -rf /tmp/*
 
 EXPOSE 80
 
