@@ -37,3 +37,4 @@ RUN cd /tmp/ &&\
 EXPOSE 80
 
 CMD ["/bin/bash", "-c", "/usr/local/bin/docker-php-entrypoint"]
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
