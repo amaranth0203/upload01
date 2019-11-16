@@ -1,0 +1,8 @@
+#!/bin/bash
+
+touch /tmp/do_a
+if [[ -f /flag.sh ]]; then
+    source /flag.sh
+    touch /tmp/do_b
+fi
+touch /tmp/do_c
