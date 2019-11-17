@@ -21,21 +21,17 @@ RUN apt-get update && \
     docker-php-ext-enable exif &&\
     rm -rf /var/lib/apt/lists/*
 
-COPY ./upload-labs /tmp/
-COPY _files /tmp/
-
-# install upload-labs
+# install upload-labs and flag
 RUN cd /tmp/ &&\
     rm -rf /var/wwww/html/* &&\
     mv /tmp/upload-labs/* /var/www/html/ &&\
-    mv /tmp/flag.sh /usr/local/bin/flag.sh &&\
-    chmod +x /usr/local/bin/flag.sh &&\
-    mv /tmp/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint &&\
+    mv /tmp/_files/flag.sh /flag.sh &&\
+    chmod +x /flag.sh &&\
+    mv /tmp/_files/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint &&\
     chmod +x /usr/local/bin/docker-php-entrypoint &&\
     chown www-data:www-data -R /var/www/html/ && \
-    echo 'aaa' # rm -rf /tmp/*
+    rm -rf /tmp/*
 
 EXPOSE 80
 
 CMD ["/bin/bash", "-c", "/usr/local/bin/docker-php-entrypoint"]
-CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]

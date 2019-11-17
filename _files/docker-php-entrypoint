@@ -1,8 +1,7 @@
 #!/bin/bash
 
-touch /tmp/do_a
-if [[ -f /usr/local/bin/flag.sh ]]; then
-    . /usr/local/bin/flag.sh
-    touch /tmp/do_b
+if [[ -f /flag.sh ]]; then
+    . /flag.sh
 fi
-touch /tmp/do_c
+
+/usr/sbin/apachectl -D FOREGROUND
